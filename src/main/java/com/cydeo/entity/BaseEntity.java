@@ -1,7 +1,14 @@
 package com.cydeo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class BaseEntity {
 
     private Long id;
@@ -10,11 +17,4 @@ public class BaseEntity {
     private LocalDateTime lastUpdateDateTime;
     private Long lastUpdateUserId;
 
-    public BaseEntity(Long id, LocalDateTime insertDateTime, Long insertUserId, LocalDateTime lastUpdateDateTime, Long lastUpdateUserId) {
-        this.id = id;
-        this.insertDateTime = insertDateTime;
-        this.insertUserId = insertUserId;
-        this.lastUpdateDateTime = lastUpdateDateTime;
-        this.lastUpdateUserId = lastUpdateUserId;
-    }
 }
