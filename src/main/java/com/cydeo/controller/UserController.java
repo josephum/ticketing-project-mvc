@@ -1,17 +1,8 @@
 package com.cydeo.controller;
 
-import com.cydeo.dto.RoleDTO;
 import com.cydeo.dto.UserDTO;
-import com.cydeo.enums.Gender;
 import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
-import com.cydeo.service.impl.RoleServiceImpl;
-import com.cydeo.service.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +50,12 @@ public class UserController {
     @PostMapping("/update")
     public String editUser(@ModelAttribute("user") UserDTO user, Model model){
         userService.update(user);
+        return "redirect:/user/create";
+    }
+
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username){
+        userService.deleteById(username);
         return "redirect:/user/create";
     }
 
