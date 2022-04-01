@@ -17,6 +17,7 @@ public class TaskDTO {
     private UserDTO assignedEmployee;
     private String taskSubject;
     private String taskDetail;
-    private LocalDate assignedDate;
     private Status taskStatus;
+    private LocalDate assignedDate;
+
 }

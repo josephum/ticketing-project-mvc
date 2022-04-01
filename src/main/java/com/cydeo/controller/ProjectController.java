@@ -72,4 +72,12 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
+    @GetMapping("/status")
+    public String statusProject(Model model){
+
+        model.addAttribute("projects",projectService.findAll());
+
+        return "manager/project-status";
+    }
+
 }
