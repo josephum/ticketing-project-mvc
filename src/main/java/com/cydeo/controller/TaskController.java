@@ -31,7 +31,7 @@ public class TaskController {
 
         model.addAttribute("task", new TaskDTO());
         model.addAttribute("projects", projectService.findAll());
-        model.addAttribute("employees", userService.findAll());
+        model.addAttribute("employees", userService.findEmployees());
         model.addAttribute("tasks",taskService.findAll());
 
         return "task/create";
@@ -56,18 +56,25 @@ public class TaskController {
 
         model.addAttribute("task", taskService.findById(id));
         model.addAttribute("projects", projectService.findAll());
-        model.addAttribute("employees", userService.findAll());
+        model.addAttribute("employees", userService.findEmployees());
         model.addAttribute("tasks",taskService.findAll());
 
         return "task/update";
     }
 
+//    @PostMapping("/update/{id}")
+//    public String updateTask(@PathVariable Long id, TaskDTO taskDTO){
+//
+//        taskDTO.setId(id);
+//        taskService.update(taskDTO);
+//
+//        return "redirect:/task/create";
+//    }
+
     @PostMapping("/update/{id}")
-    public String updateTask(@PathVariable Long id, TaskDTO taskDTO){
-
-        taskDTO.setId(id);
-        taskService.update(taskDTO);
-
+    public String updateTask(TaskDTO taskDTO){
+        taskService.update(taskDTO); // Now spring sets id into taskDTO
         return "redirect:/task/create";
     }
+
 }

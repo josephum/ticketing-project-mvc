@@ -8,4 +8,6 @@ import java.util.List;
 public interface ProjectService extends CrudService<ProjectDTO,String>{
 
     void completeById(String projectCode);
+
+    List<ProjectDTO> getCountedListOfProjectDTO(UserDTO manager);
 }
